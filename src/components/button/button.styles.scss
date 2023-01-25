@@ -4,12 +4,12 @@
     height: 50px;
     letter-spacing: 0.5px;
     line-height: 50px;
-    padding: 0 35px 0 35px;
+    padding: 0 35px;
     font-size: 15px;
     background-color: black;
     color: white;
     text-transform: uppercase;
-    font-family: 'Open Sans Condensed';
+    // font-family: 'Karla', sans-serif;
     font-weight: bolder;
     border: none;
     cursor: pointer;
@@ -21,13 +21,13 @@
         color: black;
         border: 1px solid black;
     }
-
+    // .button-container .google-sign-in
     &.google-sign-in {
         background-color: #4285f4;
         color: white;
 
         &:hover {
-            background-color: #357ae8;
+            background-color: #3578e3;
             border: none;
         }
     }
