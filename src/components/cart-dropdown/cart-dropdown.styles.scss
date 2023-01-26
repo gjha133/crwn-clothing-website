@@ -1,3 +1,24 @@
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .cart-dropdown-container {
     position: absolute;
     width: 240px;
@@ -10,11 +31,13 @@
     top: 90px;
     right: 40px;
     z-index: 5;
+    overflow-x: hidden;
 
-    .empty-message {
-        font-size: 18px;
-        margin: 50px auto;
-    }
+
+    // .empty-message {
+    //     font-size: 18px;
+    //     margin: 50px auto;
+    // }
 
     .cart-items {
         height: 240px;
@@ -27,3 +50,6 @@
         margin-top: auto;
     }
 }
+
+
+
