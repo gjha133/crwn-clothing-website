@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app'
 import {
     getAuth,
     signInWithRedirect,
@@ -8,7 +8,8 @@ import {
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
-} from 'firebase/auth';
+} from 'firebase/auth'
+
 import {
     getFirestore,
     doc,
@@ -18,7 +19,7 @@ import {
     collection,
     writeBatch,
     query,
-} from 'firebase/firestore';
+} from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyD9wbilDKiZTsiZ0LECLc8P41Uq26n2qQ8",
@@ -27,11 +28,11 @@ const firebaseConfig = {
     storageBucket: "crwn-clothing-react-db-72961.appspot.com",
     messagingSenderId: "634285547432",
     appId: "1:634285547432:web:b1a7b4e38f05de6943079d"
-};
+}
 
 // Initialize Firebase
 // const firebaseapp = 
-initializeApp(firebaseConfig);
+initializeApp(firebaseConfig)
 
 const provider = new GoogleAuthProvider()
 provider.setCustomParameters({
