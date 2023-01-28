@@ -1,23 +1,23 @@
 import { createContext, useState, useEffect } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
-    
+
     // If id is same, save cartItem with same id
     const existingCartItem = cartItems.find(
         (cartItem) => cartItem.id === productToAdd.id
     )
-    
+
     // If found, increment quantity
-    if(existingCartItem) {
+    if (existingCartItem) {
         return cartItems.map(
-            (cartItem) => cartItem.id === productToAdd.id 
-            ? {...cartItem, quantity : cartItem.quantity + 1 }
-            : cartItem
+            (cartItem) => cartItem.id === productToAdd.id
+                ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                : cartItem
         )
     }
 
     // Item not in cart, make a new item with quantity 1
-    return [...cartItems, {...productToAdd, quantity: 1}]
+    return [...cartItems, { ...productToAdd, quantity: 1 }]
 }
 
 const removeCartItem = (cartItems, cartItemToRemove) => {
@@ -26,18 +26,18 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
     )
 
     // cartItem.id !== cartItemToRemove.id will give false and filter will remove that item
-    if(existingCartItem.quantity === 1) {
+    if (existingCartItem.quantity === 1) {
         return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id)
     }
 
-    return cartItems.map((cartItem) => 
-        cartItem.id === cartItemToRemove.id 
-        ? {...cartItem, quantity : cartItem.quantity - 1 }
-        : cartItem
+    return cartItems.map((cartItem) =>
+        cartItem.id === cartItemToRemove.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
     )
 }
 
-const clearCartItem = (cartItems, cartItemToClear) => 
+const clearCartItem = (cartItems, cartItemToClear) =>
     cartItems.filter(cartItem => cartItem.id !== cartItemToClear.id)
 
 // CART CONTEXT ###############################################################################
@@ -45,23 +45,35 @@ const clearCartItem = (cartItems, cartItemToClear) =>
 
 export const CartContext = createContext({
     isCartOpen: false,
-    setIsCartOpen: () => {},
+    setIsCartOpen: () => { },
     cartItems: [],
-    addItemToCart: () => {},
-    removeItemFromCart: () => {},
-    clearItemFromCart: () => {},
+    addItemToCart: () => { },
+    removeItemFromCart: () => { },
+    clearItemFromCart: () => { },
     cartCount: 0,
     cartTotal: 0
 })
 
 
 
-export const CartProvider = ( {children} ) => {
+export const CartProvider = ({ children }) => {
 
     const [isCartOpen, setIsCartOpen] = useState(false)
     const [cartItems, setCartItems] = useState([])
     const [cartCount, setCartCount] = useState(0)
     const [cartTotal, setCartTotal] = useState(0)
+
+    useEffect(() => {
+        const savedCartItems = JSON.parse(localStorage.getItem('crwn-cart-items-data'))
+
+        if (savedCartItems) {
+            setCartItems(savedCartItems)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('crwn-cart-items-data', JSON.stringify(cartItems))
+    }, [cartItems])
 
     useEffect(() => {
         const newCartCount = cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
@@ -73,27 +85,27 @@ export const CartProvider = ( {children} ) => {
         setCartTotal(newCartTotal)
     }, [cartItems])
 
-    const addItemToCart= (productToAdd) => {
+    const addItemToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd))
     }
 
-    const removeItemFromCart= (cartItemToRemove) => {
+    const removeItemFromCart = (cartItemToRemove) => {
         setCartItems(removeCartItem(cartItems, cartItemToRemove))
     }
 
-    const clearItemFromCart= (cartItemToClear) => {
+    const clearItemFromCart = (cartItemToClear) => {
         setCartItems(clearCartItem(cartItems, cartItemToClear))
     }
 
     const value = {
-        isCartOpen, 
-        setIsCartOpen, 
-        cartItems, 
-        addItemToCart, 
-        removeItemFromCart, 
-        clearItemFromCart, 
-        cartCount, 
-        cartTotal, 
+        isCartOpen,
+        setIsCartOpen,
+        cartItems,
+        addItemToCart,
+        removeItemFromCart,
+        clearItemFromCart,
+        cartCount,
+        cartTotal,
     }
 
     return (
