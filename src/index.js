@@ -8,11 +8,12 @@ import App from './App';
 
 import { store, persistor } from './store/store';
 
-import './index.scss';
+import { GlobalStyle } from './global.styles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+    <GlobalStyle />
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>

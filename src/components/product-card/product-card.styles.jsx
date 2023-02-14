@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProductCardContainer = styled.div`
-    width: 100%;
+    width: 22vw;
     display: flex;
     flex-direction: column;
     height: 350px;
@@ -17,6 +17,7 @@ export const ProductCardContainer = styled.div`
 
     button {
         width: 80%;
+        font-size: 12px;
         opacity: 0.7;
         position: absolute;
         top: 255px;
@@ -24,7 +25,7 @@ export const ProductCardContainer = styled.div`
     }
 
     &:hover {
-        & img {
+        img {
             transform: scale(1.05);
             opacity: 0.8;
             transition: transform 10s cubic-bezier(0.25, 0.45, 0.45, 0.95);
@@ -34,7 +35,21 @@ export const ProductCardContainer = styled.div`
             opacity: 0.85;
             display: flex;
         }
-    }        
+    }   
+    
+    @media screen and(max-width: 800px) {
+        width: 40vw;
+    
+        &:hover {
+            img {
+                opacity: unset;
+            }
+    
+            button {
+                opacity: unset;
+            }
+        }
+    }
 `
 
 export const Footer = styled.div`
