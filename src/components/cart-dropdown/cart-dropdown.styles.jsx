@@ -17,29 +17,13 @@ export const CartDropdownContainer = styled.div`
     overflow-x: hidden;
 
     ${BaseButton}, ${GoogleSignInButton}, ${InvertedButton} {
-        margin-top: auto;
+        margin-top: 5px;
     }
 
-    /* width */
-    ::-webkit-scrollbar {
-        width: 10px;
-}
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-}
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 10px;
-}
-
-    /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-}
+    @media screen and (max-width: 800px) {
+        height: 320px;
+        padding: 15px;
+    }
 `
 
 export const EmptyMessage = styled.span`
@@ -52,6 +36,11 @@ export const CartItems = styled.div`
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    overflow-x: hidden;
+
+    @media screen and (max-width: 800px) {
+        height: 500px;
+    }
 `
 
 
