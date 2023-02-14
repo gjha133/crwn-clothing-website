@@ -26,9 +26,8 @@ export const ProductCardContainer = styled.div`
 
     &:hover {
         img {
-            transform: scale(1.05);
             opacity: 0.8;
-            transition: transform 10s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+            
         }
 
         button {
@@ -37,9 +36,16 @@ export const ProductCardContainer = styled.div`
         }
     }   
     
-    @media screen and(max-width: 800px) {
-        width: 40vw;
-    
+    @media screen and (max-width: 800px) {
+        width: 44vw;
+
+        button {
+            display: block;
+            opacity: 0.9;
+            min-width: unset;
+            padding: 0 10px;
+        }
+
         &:hover {
             img {
                 opacity: unset;
@@ -49,6 +55,10 @@ export const ProductCardContainer = styled.div`
                 opacity: unset;
             }
         }
+    }
+
+    @media screen and (max-width: 400px) {
+        margin-bottom: 5px;
     }
 `
 
@@ -62,8 +72,21 @@ export const Footer = styled.div`
 export const Name = styled.span`
     width: 85%;
     margin-bottom: 15px;
+
+    @media screen and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 400px) {
+        font-size: 14px;
+    }
 `
 export const Price = styled.span`
     width: auto;
+    @media screen and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 400px) {
+        font-size: 14px;
+    }
 `
 
