@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import { selectCartItems } from '../../store/cart/cart.selector'
 
@@ -31,7 +33,11 @@ const CheckoutItem = ({ cartItem }) => {
     return (
         <CheckoutItemContainer>
             <ImageContainer>
-                <img src={imageUrl} alt={`${name}`} />
+            <LazyLoadImage
+                alt={`${name}`}
+                effect="blur"
+                src={imageUrl} 
+            />
             </ImageContainer>
             <BaseSpan>
                 {name}

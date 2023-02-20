@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const ProductCardContainer = styled.div`
-    width: 22vw;
+    width: 300px;
+    height: 350px;
     display: flex;
     flex-direction: column;
-    height: 350px;
     align-items: center;
     position: relative;
 
     img {
-        width: 100%;
-        height: 95%;
+        width: 300px;
+        height: 335px;
         object-fit: cover;
         margin-bottom: 5px;
     }
@@ -37,11 +37,19 @@ export const ProductCardContainer = styled.div`
     }   
     
     @media screen and (max-width: 800px) {
-        width: 44vw;
+        width: 180px;
+        height: 265px;
+        margin-bottom: 20px;
+
+        img {
+            width: 180px;
+            height: 250px;
+        }
 
         button {
+            top: 180px;
             display: block;
-            opacity: 0.9;
+            opacity: 0.7;
             min-width: unset;
             padding: 0 10px;
         }
@@ -57,36 +65,46 @@ export const ProductCardContainer = styled.div`
         }
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 480px) {
         margin-bottom: 5px;
     }
 `
 
 export const Footer = styled.div`
-    width: 100%;
-    height: 5%;
+    width: 300px;
+    height: 10px;
     display: flex;
     justify-content: space-between;
     font-size: 18px;
+
+    @media screen and (max-width: 800px) {
+        width: 180px;
+        height: 10px;
+        font-size: 12px;
+    }
+
+    @media screen and (max-width: 480px) {
+        margin-bottom: 5px;
+    }
 `
 export const Name = styled.span`
     width: 85%;
     margin-bottom: 15px;
 
     @media screen and (max-width: 800px) {
-        font-size: 16px;
+        font-size: 14px;
     }
     @media screen and (max-width: 400px) {
-        font-size: 14px;
+        font-size: 12px;
     }
 `
 export const Price = styled.span`
     width: auto;
     @media screen and (max-width: 800px) {
-        font-size: 16px;
+        font-size: 14px;
     }
     @media screen and (max-width: 400px) {
-        font-size: 14px;
+        font-size: 12px;
     }
 `
 
